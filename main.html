@@ -4,9 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>PHOOM | Bio</title>
-  
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
+  <script> // ตรวจสอบว่าผู้ใช้กด Refresh หน้าเว็บหรือไม่
+if (performance.getEntriesByType("navigation")[0]?.type === 'reload' || performance.navigation?.type === 1) {
+    // ถ้ามีการกดรีเฟรช ให้เตะกลับไปหน้ายืนยันอายุทันที
+    window.location.href = 'index.html';
+}
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
