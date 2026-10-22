@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Restricted Content</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { background-color: #000; overflow: hidden; margin: 0; }
+  </style>
+</head>
+<body class="w-screen h-screen flex items-center justify-center p-2 bg-black">
+
+  <!-- หน้าจอวิดีโอ 6 ช่อง -->
+  <div class="w-full h-full grid grid-cols-2 sm:grid-cols-3 gap-2 relative">
+    <div class="relative w-full h-full overflow-hidden rounded-2xl bg-slate-900 border border-slate-800">
+      <video class="target-video w-full h-full object-cover" playsinline loop autoplay muted preload="auto">
+        <source src="xxx1.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="relative w-full h-full overflow-hidden rounded-2xl bg-slate-900 border border-slate-800">
+      <video class="target-video w-full h-full object-cover" playsinline loop autoplay muted preload="auto">
+        <source src="xxx2.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="relative w-full h-full overflow-hidden rounded-2xl bg-slate-900 border border-slate-800">
+      <video class="target-video w-full h-full object-cover" playsinline loop autoplay muted preload="auto">
+        <source src="xxx3.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="relative w-full h-full overflow-hidden rounded-2xl bg-slate-900 border border-slate-800">
+      <video class="target-video w-full h-full object-cover" playsinline loop autoplay muted preload="auto">
+        <source src="xxx4.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="relative w-full h-full overflow-hidden rounded-2xl bg-slate-900 border border-slate-800">
+      <video class="target-video w-full h-full object-cover" playsinline loop autoplay muted preload="auto">
+        <source src="xxx5.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="relative w-full h-full overflow-hidden rounded-2xl bg-slate-900 border border-slate-800">
+      <video class="target-video w-full h-full object-cover" playsinline loop autoplay muted preload="auto">
+        <source src="xxx6.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const videos = document.querySelectorAll('.target-video');
+      
+      videos.forEach((video, index) => {
+        // เริ่มต้นด้วยการสั่งเล่น ( Autoplay )
+        const playPromise = video.play();
+
+        if (playPromise !== undefined) {
+          playPromise.then(() => {
+            // เมื่อวิดีโอเริ่มเล่นแล้ว ให้เปิดเสียง
+            if (index !== 5) { // คลิปที่ 1-5 เปิดเสียง
+              video.muted = false;
+              video.volume = 1.0;
+            } else { // คลิปที่ 6 ปิดเสียงไว้
+              video.volume = 0;
+            }
+          }).catch(error => {
+            console.log("Autoplay failed:", error);
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
